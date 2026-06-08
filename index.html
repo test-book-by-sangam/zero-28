@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCA Premium Live Test</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #eef2f5; 
+            color: #333;
+            padding: 20px; 
+            margin: 0;
+        }
+        .container { 
+            background: white; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+            border-top: 8px solid #1a5276; 
+            border-radius: 8px;
+        }
+        .header { text-align: center; border-bottom: 2px solid #1a5276; padding-bottom: 15px; margin-bottom: 25px; }
+        .header h1 { margin: 0; color: #1a5276; font-size: 26px; }
+        .header h2 { margin: 5px 0 0; color: #555; font-size: 16px; }
+        .instructions { background: #fef9e7; padding: 15px; border-left: 5px solid #f39c12; font-size: 14px; margin-bottom: 25px; border-radius: 4px; }
+        .section-title { background: #1a5276; color: white; padding: 10px 15px; font-size: 16px; font-weight: bold; margin: 30px 0 15px 0; border-radius: 4px; }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .question-text { font-weight: 600; color: #1e293b; margin-bottom: 12px; font-size: 15px; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-label { display: flex; align-items: center; padding: 8px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .option-label:hover { background: #f1f5f9; }
+        .option-label input { margin-right: 10px; cursor: pointer; }
+        
+        /* Result Highlights */
+        .correct-answer { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; font-weight: bold; }
+        .wrong-answer { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; text-decoration: line-through; }
+        
+        .submit-btn { display: block; width: 100%; padding: 15px; background: #1a5276; color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .submit-btn:hover { background: #154360; }
+        
+        #result-box { display: none; background: #d4edda; color: #155724; border: 2px solid #28a745; padding: 20px; margin-top: 30px; text-align: center; border-radius: 8px; font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>12th - LIVE EXAM PORTAL</h1>
+        <h3> ओ सदानीरा Online Test (50 Questions)</h3>
+<h2 style="font-size:10px; color:#888; font-weight:normal;">
+    यह test sangam (in id-@sangam__zero) द्वारा बनाया गया है। यदि आप भी अपने लिए इसी प्रकार का online test बनवाना चाहते हैं, तो 9241967602 पर Message कर सकते हैं।</h2>
+    </div>
+
+    <div class="instructions">
+        <strong>निर्देश:</strong> सभी प्रश्नों के उत्तर दें। प्रत्येक प्रश्न के 4 विकल्प हैं। परीक्षण पूरा करने के बाद <strong>"Submit Test"</strong> पर क्लिक करें ताकि आप अपना स्कोर और सही उत्तर देख सकें।
+    </div>
+
+    <form id="quizForm">
+        
+        <!-- SECTION 01 -->
+        <div class="section-title">SECTION 01. </div>
+        
+        <script>
+            // All 50 Questions Data (Generated Dynamically for clean code)
+           const questions = [
+                // SECTION - ओ सदानीरा (जगदीशचन्द्र माथुर) - Hindi 12th Objective Questions
+                { q: "1. निम्नलिखित में कौन-सी रचना जगदीशचन्द्र माथुर की है ?", opt: ["सिपाही की माँ", "जूठन", "ओ सदानीरा", "तिरिछ"], ans: 2 },
+                { q: "2. 'ओ सदानीरा' शीर्षक पाठ किस विधा के अन्तर्गत आता है ?", opt: ["निबंध", "कहानी", "कविता", "नाटक"], ans: 0 },
+                { q: "3. जगदीशचन्द्र माथुर मूलतः क्या थे ?", opt: ["निबंधकार", "कहानीकार", "नाटककार", "उपन्यासकार"], ans: 2 },
+                { q: "4. 'ओ सदानीरा' निबंध बिहार के किस क्षेत्र की संस्कृति पर लिखा गया है ?", opt: ["सारण", "तिरहुत", "मिथिला", "चंपारण"], ans: 3 },
+                { q: "5. चंपारण क्षेत्र में बाढ़ का मुख्य कारण क्या है ?", opt: ["जंगलों का कटना", "नदियों की अधिकता", "नदियों की तीव्रधारा", "इनमें से कोई नहीं"], ans: 0 },
+                { q: "6. माथुर जी किस राज्य के शिक्षा सचिव नियुक्त हुए ?", opt: ["मध्य प्रदेश", "आन्ध्रप्रदेश", "बिहार", "उत्तर प्रदेश"], ans: 0 },
+                { q: "7. बारहवीं सदी के लगभग तीन सौ वर्ष तक किस वंश का शासन था ?", opt: ["मौर्य वंश", "चालुक्य वंश", "गुप्त वंश", "कर्णाट वंश"], ans: 3 },
+                { q: "8. अंग्रेज ठेकेदारों ने किस चीज की खेती का विस्तार किया ?", opt: ["दलहन", "नील", "गेहूँ", "तिलहन"], ans: 1 },
+                { q: "9. राजा हरिसिंह देव को गयासुद्दीन तुगलक का सामना कब करना पड़ा ?", opt: ["1225 ई० में", "1250 ई० में", "1325 ई० में", "1350 ई० में"], ans: 2 },
+                { q: "10. धांगड़ों को नील की खेती के सिलसिले में कब लाया गया ?", opt: ["18वीं शताब्दी के अन्त में", "17वीं शताब्दी के अन्त में", "19वीं शताब्दी के अन्त में", "इनमें से कोई नहीं"], ans: 0 },
+                { q: "11. पुंडलीक जी कौन थे ?", opt: ["गाँव का मुखिया", "शिक्षक", "चिकित्सक", "राजनीतिक नेता"], ans: 1 },
+                { q: "12. निम्नलिखित में से कौन-सा नाटक जगदीशचन्द्र माथुर रचित है ?", opt: ["दीपक", "आधे-अधूरे", "कोणार्क", "ओ मेरे मन"], ans: 2 },
+                { q: "13. निम्नलिखित में से कौन-सी उपाधि माथुर जी को मिली ?", opt: ["विद्या प्रदक्षिणा", "विद्या वारिधि", "विद्या कामिनी", "इनमें कोई नहीं"], ans: 1 },
+                { q: "14. माथुर जी भितिहरवा पहुँचने पर कौन मिले ?", opt: ["गाँधी जी", "गोखले जी", "पुंडलीक जी", "इनमें कोई नहीं"], ans: 2 },
+                { q: "15. पुंडलीक जी ने निर्भिकता किससे सीखी ?", opt: ["गोखले जी से", "गाँधी जी से", "कृपलानी जी से", "इनमें किसी से नहीं"], ans: 1 },
+                { q: "16. कर्णाट वंश के राजा हरिसिंह को किसका मुकाबला करना पड़ा ?", opt: ["गयासुद्दीन तुगलक", "नादिरशाह", "अलाउद्दीन खिलजी", "कुतुबुद्दीन ऐबक"], ans: 0 },
+                { q: "17. चंपारण के धांगड़ कहाँ से आए ?", opt: ["राँची", "जमशेदपुर", "छोटानागपुर", "आंध्र प्रदेश"], ans: 2 },
+                { q: "18. गाँधी जी चंपारण में कब आए ?", opt: ["अप्रैल 1918 में", "अप्रैल 1920 में", "20 जून 1917 में", "अप्रैल 1917 में"], ans: 3 },
+                { q: "19. 'तीनकठिया' प्रथा का संबंध है ?", opt: ["इन्क से", "तम्बाकू से", "मसाला से", "नील से"], ans: 3 },
+                { q: "20. पंडई नदी कहाँ तक जाती है ?", opt: ["भिखनाथोरी", "बगहा", "रामनगर", "भितिहरवा"], ans: 0 },
+                { q: "21. बराज कहाँ बन रहा था ?", opt: ["बेलगाँव", "भितिहरवा में", "अमोलवा में", "भैंसालोटन में"], ans: 3 },
+                { q: "22. आम्रपाली (अंबपाली) ने तथागत को क्या सौंपा था ?", opt: ["कदलीवन", "आम्रवन", "दस हजार स्वर्णमुद्राएँ", "अपना भवन"], ans: 1 },
+                { q: "23. मठ के महंत ने गाँधी जी को कहाँ शरण दी ?", opt: ["एक जामुन के पेड़ के नीचे", "अपने मठ में", "एक झोपड़ी में", "एक महुए के पेड़ के नीचे"], ans: 3 },
+                { q: "24. जगदीशचंद्र माथुर का जन्म हुआ था ?", opt: ["16 जुलाई 1917 को", "16 जुलाई 1918 को", "17 अगस्त 1917 को", "20 सितंबर 1917 को"], ans: 0 },
+                { q: "25. वैशाली महोत्सव का बीजारोपण किया ?", opt: ["अज्ञेय ने", "जगदीशचंद्र माथुर ने", "श्री कृष्ण सिंह ने", "अशोक वाजपेयी ने"], ans: 1 },
+                { q: "26. कौन-सी कृति माथुर जी की नहीं है ?", opt: ["मेरी बाँसुरी", "बंदी", "रेशमी टाई", "कोणार्क"], ans: 2 },
+                { q: "27. कौन-सी कृति माथुर जी की नहीं है ?", opt: ["जानवर और जानवर", "कहानी : नई कहानी", "यायावर रहेगा याद", "भोर का तारा"], ans: 3 },
+                { q: "28. 'बोलते क्षण' किस साहित्यिक विधा की कृति है ?", opt: ["निबंध", "कहानी", "संस्मरण", "आलोचना"], ans: 0 },
+                { q: "29. 'ओ सदानीरा' किसको निमित बनाकर लिखा गया है ?", opt: ["गंगा", "गंडक", "यमुना", "महानदी"], ans: 1 },
+                { q: "30. 'थारन' शब्द किस शब्द से विकसित है ?", opt: ["थल", "थार", "स्थल", "स्थान"], ans: 1 },
+                { q: "31. बिहार के सुप्रसिद्ध सांस्कृतिक उत्सव 'वैशाली महोत्सव' का बीजारोपण किसने किया ?", opt: ["जॉर्ज ग्रियर्सन ने", "सच्चिदानंद सिन्हा ने", "जगदीशचंद्र माथुर ने", "डॉ. राजेन्द्र प्रसाद ने"], ans: 2 },
+                { q: "32. 'ओ मेरे सपने' क्या है ?", opt: ["उपन्यास", "कहानी", "खंडकाव्य", "नाटक"], ans: 3 },
+                { q: "33. गौतम बुद्ध का आविर्भाव कब हुआ था ?", opt: ["दो हजार वर्ष पहले", "ढाई हजार वर्ष पहले", "तीन हजार वर्ष पहले", "पाँच सौ वर्ष पहले"], ans: 1 },
+                { q: "34. राजा हरिसिंह देव को किसका मुकाबला करना पड़ा था ?", opt: ["गयासुद्दीन तुगलक का", "नादिरशाह का", "अहमदशाह का", "बाबर का"], ans: 0 },
+                { q: "35. 'ओ सदानीरा' के लेखक हैं –", opt: ["जगदीशचंद्र माथुर", "लक्ष्मीनारायण लाल", "लक्ष्मीनारायण मिश्र", "जयशंकर प्रसाद"], ans: 0 },
+                { q: "36. 'कोणार्क' के नाटककार कौन हैं ?", opt: ["जयशंकर प्रसाद", "जगदीशचंद्र माथुर", "हरेकृष्ण प्रेमी", "मैथिलीशरण गुप्त"], ans: 1 },
+                { q: "37. 'दस तस्वीरें' के रचनाकार कौन हैं ?", opt: ["रामवृक्ष बेनीपुरी", "जगदीशचंद्र माथुर", "देवेंद्र सत्यार्थी", "महादेवी वर्मा"], ans: 1 }
+            ];
+            // Render Questions
+            questions.forEach((item, index) => {
+                if(index === 10) document.write('<div class="section-title">SECTION 02. </div>');
+                if(index === 20) document.write('<div class="section-title">SECTION 03. </div>');
+                if(index === 30) document.write('<div class="section-title">SECTION 04. </div>');
+                if(index === 40) document.write('<div class="section-title">SECTION 05. </div>');
+
+                let optionsHTML = '';
+                item.opt.forEach((option, i) => {
+                    optionsHTML += `
+                        <label class="option-label" id="label-q${index}-opt${i}">
+                            <input type="radio" name="q${index}" value="${i}">
+                            ${String.fromCharCode(97 + i)}) ${option}
+                        </label>`;
+                });
+
+                document.write(`
+                    <div class="question-block" id="qBlock${index}">
+                        <div class="question-text">${item.q}</div>
+                        <div class="options">${optionsHTML}</div>
+                    </div>
+                `);
+            });
+        </script>
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit Test & Check Result</button>
+    </form>
+
+    <div id="result-box"></div>
+
+</div>
+
+<script>
+    function calculateScore() {
+        let score = 0;
+        let total = questions.length;
+
+        questions.forEach((item, index) => {
+            // Get selected option
+            let selected = document.querySelector(`input[name="q${index}"]:checked`);
+            let correctValue = item.ans;
+            
+            // Highlight correct answer permanently
+            let correctLabel = document.getElementById(`label-q${index}-opt${correctValue}`);
+            correctLabel.classList.add("correct-answer");
+
+            if (selected) {
+                let selectedValue = parseInt(selected.value);
+                if (selectedValue === correctValue) {
+                    score++;
+                } else {
+                    // Highlight wrong answer if user selected it
+                    let wrongLabel = document.getElementById(`label-q${index}-opt${selectedValue}`);
+                    wrongLabel.classList.add("wrong-answer");
+                }
+            }
+        });
+
+        // Show Score
+        let resultBox = document.getElementById('result-box');
+        resultBox.style.display = "block";
+        
+        let percentage = (score / total) * 100;
+        let message = "";
+        
+        if(percentage >= 80) message = "उत्कृष्ट प्रदर्शन! 🌟";
+        else if(percentage >= 50) message = "अच्छा प्रयास, थोड़ी और मेहनत करें! 👍";
+        else message = "आपको और अभ्यास की आवश्यकता है! 📚";
+
+        resultBox.innerHTML = `आपका स्कोर: ${score} / ${total} <br><span style="font-size:18px; color:#333;">${message}</span>`;
+        
+        // Scroll to result
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
